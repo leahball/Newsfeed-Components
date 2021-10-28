@@ -86,8 +86,41 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Halloween is Coming',
+    date: 'Oct 31, 2021',
+    firstParagraph: 'Some of my favorite Halloween Movies are the Blade Trilogy, Poltergeist, Prometheus, Hocus Pocus'
+  },
+  {
+    title: 'Christmas is Coming',
+    date: 'Dec 25, 2021',
+    firstParagraph: 'Some of my favorite xmas Movies are Brazil, Elf, Home for the Holidays'
+  },
+  {
+    title: 'New Years is Coming',
+    date: 'Dec 31, 2021',
+    firstParagraph: 'bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles'
   }
 ];
+
+// data.push = [
+//   {
+//     title: 'Halloween is Coming',
+//     date: 'Oct 31, 2021',
+//     firstParagraph: 'Some of my favorite Halloween Movies are the Blade Trilogy, Poltergeist, Prometheus, Hocus Pocus'
+//   },
+//   {
+//     title: 'Christmas is Coming',
+//     date: 'Dec 25, 2021',
+//     firstParagraph: 'Some of my favorite xmas Movies are Brazil, Elf, Home for the Holidays'
+//   },
+//   {
+//     title: 'New Years is Coming',
+//     date: 'Dec 31, 2021',
+//     firstParagraph: 'bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles'
+//   }
+// ];
 
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
@@ -114,3 +147,51 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagraph}) {
+  const article = document.createElement('div');
+  const dataTitle = document.createElement('h2'); //h2
+  const dataDate = document.createElement('p'); //date
+  const dataContentOne = document.createElement('p'); //paragraph
+  const dataContentTwo = document.createElement('p'); //paragraph
+  const dataContentThree = document.createElement('p'); //paragraph
+  const dataButton = document.createElement('span'); //paragraph
+
+  article.appendChild(dataTitle);
+  article.appendChild(dataDate);
+  article.appendChild(dataContentOne);
+  article.appendChild(dataContentTwo);
+  article.appendChild(dataContentThree);
+  article.appendChild(dataButton);
+
+  article.classList.add('article');
+  dataDate.classList.add('date');
+  dataButton.classList.add('expandButton');
+  dataTitle.classList.add('h2');
+
+  dataTitle.textContent = title;
+  dataDate.textContent = date;
+  dataContentOne.textContent = firstParagraph;
+  dataContentTwo.textContent = secondParagraph;
+  dataContentThree.textContent = thirdParagraph;
+  dataButton.textContent = 'expand';
+
+  dataButton.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+    if(dataButton.textContent === 'expand' ){
+      dataButton.textContent = 'collapse';
+    }else {
+      dataButton.textContent = 'expand';
+    }
+  })
+  return article;
+}
+
+const articles = document.querySelector('.articles');
+data.forEach(each => {
+  const news = articleMaker(each);
+  articles.appendChild(news);
+})
+
+
+
+
