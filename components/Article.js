@@ -114,3 +114,59 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagraph}) {
+  const article = document.createElement('div');
+  const dataTitle = document.createElement('h2'); //h2
+  const dataDate= document.createElement('p'); //date
+  const dataContentOne= document.createElement('p'); //paragraph
+  const dataContentTwo= document.createElement('p'); //paragraph
+  const dataContentThree= document.createElement('p'); //paragraph
+  const dataButton= document.createElement('span'); //paragraph
+
+  article.appendChild(dataTitle);
+  article.appendChild(dataDate);
+  article.appendChild(dataContentOne);
+  article.appendChild(dataContentTwo);
+  article.appendChild(dataContentThree);
+  article.appendChild(dataButton);
+
+  article.classList.add('article');
+  dataDate.classlist.add('date');
+  dataButton.classList.add('expandButton');
+
+  dataTitle.textContent = title;
+  dataDate.textContent = date;
+  dataContentOne.textContent = firstParagraph;
+  dataContentTwo.textContent = secondParagraph;
+  dataContentThree.textContent = thirdParagraph;
+  dataButton.textContent = 'expand';
+
+  dataButton.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  })
+  return article;
+}
+
+const articles = querySelector('.article')
+articles.appendChild
+
+
+
+
+ for(let i = 0; i < data.length; i++){
+   const article = document.createElement('li'); //li  
+   menuItem.textContent = data[i];
+   menuList.appendChild(menuItem);
+ }
+ const foldingMenu = document.querySelector('.menu-button');
+ foldingMenu.addEventListener('click', () => {
+ menu.classList.toggle('menu--open');
+ })
+ menu.appendChild(menuList);
+ menu.classList.add('menu');
+ return articles;
+}
+
+ const menu = menuMaker(menuItems);
+ const header = document.querySelector('.header');
+ header.appendChild(menu);
