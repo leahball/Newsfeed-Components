@@ -86,8 +86,41 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Halloween is Coming',
+    date: 'Oct 31, 2021',
+    firstParagraph: 'Some of my favorite Halloween Movies are the Blade Trilogy, Poltergeist, Prometheus, Hocus Pocus'
+  },
+  {
+    title: 'Christmas is Coming',
+    date: 'Dec 25, 2021',
+    firstParagraph: 'Some of my favorite xmas Movies are Brazil, Elf, Home for the Holidays'
+  },
+  {
+    title: 'New Years is Coming',
+    date: 'Dec 31, 2021',
+    firstParagraph: 'bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles'
   }
 ];
+
+// data.push = [
+//   {
+//     title: 'Halloween is Coming',
+//     date: 'Oct 31, 2021',
+//     firstParagraph: 'Some of my favorite Halloween Movies are the Blade Trilogy, Poltergeist, Prometheus, Hocus Pocus'
+//   },
+//   {
+//     title: 'Christmas is Coming',
+//     date: 'Dec 25, 2021',
+//     firstParagraph: 'Some of my favorite xmas Movies are Brazil, Elf, Home for the Holidays'
+//   },
+//   {
+//     title: 'New Years is Coming',
+//     date: 'Dec 31, 2021',
+//     firstParagraph: 'bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles and bubbles'
+//   }
+// ];
 
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
@@ -117,11 +150,11 @@ const data = [
 function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagraph}) {
   const article = document.createElement('div');
   const dataTitle = document.createElement('h2'); //h2
-  const dataDate= document.createElement('p'); //date
-  const dataContentOne= document.createElement('p'); //paragraph
-  const dataContentTwo= document.createElement('p'); //paragraph
-  const dataContentThree= document.createElement('p'); //paragraph
-  const dataButton= document.createElement('span'); //paragraph
+  const dataDate = document.createElement('p'); //date
+  const dataContentOne = document.createElement('p'); //paragraph
+  const dataContentTwo = document.createElement('p'); //paragraph
+  const dataContentThree = document.createElement('p'); //paragraph
+  const dataButton = document.createElement('span'); //paragraph
 
   article.appendChild(dataTitle);
   article.appendChild(dataDate);
@@ -131,8 +164,9 @@ function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagr
   article.appendChild(dataButton);
 
   article.classList.add('article');
-  dataDate.classlist.add('date');
+  dataDate.classList.add('date');
   dataButton.classList.add('expandButton');
+  dataTitle.classList.add('h2');
 
   dataTitle.textContent = title;
   dataDate.textContent = date;
@@ -143,30 +177,21 @@ function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagr
 
   dataButton.addEventListener('click', () => {
     article.classList.toggle('article-open');
+    if(dataButton.textContent === 'expand' ){
+      dataButton.textContent = 'collapse';
+    }else {
+      dataButton.textContent = 'expand';
+    }
   })
   return article;
 }
 
-const articles = querySelector('.article')
-articles.appendChild
+const articles = document.querySelector('.articles');
+data.forEach(each => {
+  const news = articleMaker(each);
+  articles.appendChild(news);
+})
 
 
 
 
- for(let i = 0; i < data.length; i++){
-   const article = document.createElement('li'); //li  
-   menuItem.textContent = data[i];
-   menuList.appendChild(menuItem);
- }
- const foldingMenu = document.querySelector('.menu-button');
- foldingMenu.addEventListener('click', () => {
- menu.classList.toggle('menu--open');
- })
- menu.appendChild(menuList);
- menu.classList.add('menu');
- return articles;
-}
-
- const menu = menuMaker(menuItems);
- const header = document.querySelector('.header');
- header.appendChild(menu);
